@@ -6,14 +6,20 @@ fn main() {
 
     let number: i8 = 54;
 
+    main_loop(number);
+}
+
+fn main_loop(number: i8) {
     let mut guess:  String= String::new();
 
-    io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+    while true {
+        io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line, retry.");
 
-    println!("\nYou guessed: {guess}");
-    check_num(guess, number);
+        println!("\nYou guessed: {guess}");
+        check_num(guess, number);
+    }
 }
 
 fn check_num(guess: i8, number: i8) {
